@@ -2,19 +2,19 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-// import dataService from '../../data-service';
+import dataService from '../../data-service';
 
 function AlbomFotos() {
 
-  const [photos, setPhotos] = useState();
+  const [photos, setPhotos] = useState([]);
 
-  // const {id} = useParams()
+  const {id} = useParams();
 
-  // useEffect(() => {
-  //   dataService.get(`/photos?albumid=${id}`)
-  //   .then(({data}) => setPhotos(data))
-  //   .catch(error) = console.log(error)
-  // }, [id])
+  useEffect(() => {
+    dataService.get(`/photos?albumId=${id}`)
+    .then(({data}) => setPhotos(data))
+    .catch(error => console.log(error))
+  }, [id]);
 
   return (
     <div>
@@ -29,6 +29,6 @@ function AlbomFotos() {
       ))}
     </div>
   )
-}
+};
 
 export default AlbomFotos;

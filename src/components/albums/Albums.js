@@ -24,8 +24,8 @@ function Albums() {
       <Route path={`${path}`} >
         <AlbumList albums={albums} />
       </Route>
-      <Route path={`${path}`} >
-        <AlbumPhotos albums={albums} />
+      <Route path={`${path}:id`} >
+        <AlbumPhotos />
       </Route>
     </Switch>
   )
