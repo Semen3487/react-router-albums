@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 import dataService from '../../data-service';
+import './UsersList.css';
+
 
 function UsersList() {
 
@@ -17,18 +19,23 @@ function UsersList() {
   }, []) 
 
   return (
-    <ul className='users-container' >
+    <ul className='users-inner' >
       {users.map((user) => {
         return(
-          <li key={user.id} className='item-container' >
+          <li key={user.id} className='users-item' >
             <Link to={`${url}/${user.id}`} 
                   className='nav-user' 
                   >
-                    <p className='user' >
-                      {user.name} {user.phone} 
-                    </p>
+              <span className='user' >
+                {user.name} {user.phone} 
+              </span>
             </Link>
-            <Link></Link>
+            <Link to={`${url}/add/${user.id}`} >
+              <span id='edit' className='fa fa-pencil' >
+              </span>
+            </Link>
+            <span id='delete' className='fa fa-trash-o' >
+            </span>
           </li>
         )
       })}

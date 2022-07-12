@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import dataService from '../../data-service';
+import './AlbumPhotos.css';
 
 function AlbomFotos() {
 
@@ -13,21 +14,22 @@ function AlbomFotos() {
   useEffect(() => {
     dataService.get(`/photos?albumId=${id}`)
     .then(({data}) => setPhotos(data))
-    .catch(error => console.log(error))
+    .catch((error) => console.log(error))
   }, [id]);
 
   return (
-    <div>
+    <ul className='albums-inner'>
       {photos.map(({title, id, thumbnailUrl}) => (
-        <p key={id} >
-          {title}
+        <li key={id} className='photos-item'>
           <img src={thumbnailUrl} 
-          alt={title} 
-          width='150px'
-          ></img>
-        </p>
+            alt={title}>
+          </img>
+          <span className='photos-title'>
+            {title}
+          </span>
+        </li>
       ))}
-    </div>
+    </ul>
   )
 };
 

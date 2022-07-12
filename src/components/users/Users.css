@@ -1,0 +1,8 @@
+.users-nav {
+  width: 110px;
+  padding: 7px 14px;
+  margin-bottom: 20px;
+  color: var(--header-col);
+  background-color: var(--btn-bgc);
+  border: solid 2px var(--elem-odd-bgc);
+}

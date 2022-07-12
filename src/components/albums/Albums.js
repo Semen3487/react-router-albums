@@ -21,10 +21,10 @@ function Albums() {
 
   return (
     <Switch>
-      <Route path={`${path}`} >
+      <Route path={`${path}`} exact>
         <AlbumList albums={albums} />
       </Route>
-      <Route path={`${path}:id`} >
+      <Route path={`${path}/:id`} >
         <AlbumPhotos />
       </Route>
     </Switch>

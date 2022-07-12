@@ -1,21 +1,19 @@
-.albums-inner {
+.album-inner {
   height: 450px;
-  margin-top: 80px;
+  margin-top: 20px;
   padding-right: 10px;
   overflow-y: scroll;
 }
 
-.albums-item {
+.album-item {
   margin-bottom: 10px;
   padding: 10px 5px 10px;
 }
 
-.albums-item:nth-child(odd) {
+.album-item:nth-child(odd) {
  background-color: var(--elem-odd-bgc);
 }
 
-.albums-item:nth-child(even) {
+.album-item:nth-child(even) {
   background-color: var(--elem-even-bgc);
 }
-
-

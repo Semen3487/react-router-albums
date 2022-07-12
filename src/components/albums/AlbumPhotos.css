@@ -1,0 +1,14 @@
+.photos-item {
+  margin-bottom: 10px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+img {
+  width: 50%;
+}
+
+.photos-title {
+  width: 40%;
+}

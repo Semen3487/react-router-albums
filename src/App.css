@@ -9,13 +9,22 @@
 :root {
   --main-bgc: rgb(76, 97, 105);
   --main-col: white;
-  --elem-bgc: rgb(194, 197, 201);
+  --header-col: rgb(47, 186, 246);
+  --select-col: lightgreen;
+  --elem-odd-bgc: rgb(100, 112, 124);
+  --elem-even-bgc: rgb(74, 88, 99);
   --btn-bgc: rgb(58, 69, 74);
 }
 
 body {
-  color: var(--main-col);
   background-color: var(--main-bgc);
+}
+
+.container {
+  padding: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  color: var(--main-col);
 }
 
 ul {
@@ -26,28 +35,12 @@ li {
   list-style-type: none;
 }
 
-.container {
-  padding: 20px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  text-align: center;
-}
-
-.content {
-  padding: 15px;
-  width: 65%;
-  max-width: 600px;
-  min-width: 400px;
-  user-select: none;
-
-  border: solid 2px white;
-}
-
 ul::-webkit-scrollbar {
   width: 7px;              
 }
 
 ul::-webkit-scrollbar-track {
-  background: rgb(100, 112, 124);
+  background: var(--elem-odd-bgc);
 }
 
 ul::-webkit-scrollbar-thumb {
@@ -55,27 +48,53 @@ ul::-webkit-scrollbar-thumb {
   border-radius: 20px;       
 }
 
+.content {
+  padding: 15px;
+  width: 70%;
+  max-width: 600px;
+  min-width: 400px;
+  user-select: none;
+
+  border: solid 1px var(--main-col);
+}
+
 .header-inner {
   display: flex;
   flex-flow: row nowrap;
+  margin-bottom: 20px;
 }
 
 .header-item {
   padding: 7px 14px;
-  color: rgb(47, 186, 246);
+  color: var(--header-col);
   background-color: var(--btn-bgc);
-  border: solid 2px rgb(47, 186, 246);
-}
-
-.button-add {
-  min-height: 60px;
+  border: solid 2px var(--elem-odd-bgc);
 }
 
 .selected {
-  color: lightgreen;
+  color: var(--select-col);
   /* border: solid 2px lightgreen; */
 }
 
+.albums-inner {
+  height: 450px;
+  margin-top: 80px;
+  padding-right: 10px;
+  overflow-y: scroll;
+}
+
+.albums-item {
+  margin-bottom: 10px;
+  padding: 10px 5px 10px;
+}
+
+.albums-item:nth-child(odd) {
+ background-color: var(--elem-odd-bgc);
+}
+
+.albums-item:nth-child(even) {
+  background-color: var(--elem-even-bgc);
+}
 
 
 

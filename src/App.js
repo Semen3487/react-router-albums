@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter as Router, NavLink, Redirect, Route,  Switch } from 'react-router-dom';
 import './App.css';
 
@@ -34,7 +35,6 @@ function App() {
               </li>
             </ul>
           </div>
-          <div className='button-add'></div>
           <Switch>
             <Route path='/albums'>
               <Albums />

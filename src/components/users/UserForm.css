@@ -1,0 +1,11 @@
+.form-inner {
+  height: 450px;
+  margin-top: 20px;
+  padding-right: 10px;
+  /* overflow-y: scroll; */
+}
+
+input {
+  outline: transparent;
+  border-color: transparent;
+}
