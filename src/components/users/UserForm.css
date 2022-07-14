@@ -1,11 +1,37 @@
 .form-inner {
   height: 450px;
-  margin-top: 20px;
-  padding-right: 10px;
-  /* overflow-y: scroll; */
+  margin-top: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
 
 input {
+  min-width: 250px;
+  margin: 7px 10px;
+  padding: 5px;
+  text-indent: 2%;
+  color: var(--main-col);
+  caret-color: var(--main-col);
+  background-color: var(--elem-odd-bgc);
   outline: transparent;
   border-color: transparent;
+}
+
+fieldset {
+  margin-bottom: 10px;
+  width: 85%;
+  text-align: right;
+}
+
+fieldset > div > input {
+  margin-right: 40px;
+}
+
+legend {
+  padding: 0 10px;
+}
+
+button {
+  margin: 5px 15px;
 }

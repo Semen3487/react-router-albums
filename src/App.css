@@ -64,7 +64,8 @@ ul::-webkit-scrollbar-thumb {
   margin-bottom: 20px;
 }
 
-.header-item {
+.header-item,
+.footer-item {
   padding: 7px 14px;
   color: var(--header-col);
   background-color: var(--btn-bgc);
