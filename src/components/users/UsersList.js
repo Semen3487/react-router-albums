@@ -1,22 +1,29 @@
-import React from 'react';
-// import { useEffect } from 'react';
-// import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useRouteMatch } from 'react-router-dom';
-// import dataService from '../../data-service';
+
+import { deleteUserAction, receiveUserAction } from '../../store/actions/usersActions';
 import './UsersList.css';
 
 
 function UsersList({users}) {
 
-  // const [users, setUsers] = useState([]);
-
   const {url} = useRouteMatch();
 
-  // useEffect(() => {
-  //   dataService.get('/users')
-  //   .then(({data}) => setUsers(data))
-  //   .catch((error) => console.log(error))
-  // }, []) 
+  const [user, setUser] = useState(users);
+
+  console.log(user)
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(receiveUserAction())
+  }, [dispatch]);
+
+
+  function toDeleteUser() {
+    setUser(dispatch(deleteUserAction(user.id)));
+  };
 
   return (
     <ul className='users-inner' >
@@ -34,7 +41,9 @@ function UsersList({users}) {
               <span id='edit' className='fa fa-pencil' >
               </span>
             </Link>
-            <span id='delete' className='fa fa-trash-o' >
+            <span id='delete' className='fa fa-trash-o' 
+                  type='button' 
+                  onClick={toDeleteUser}>
             </span>
           </li>
         )

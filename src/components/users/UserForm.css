@@ -34,4 +34,5 @@ legend {
 
 button {
   margin: 5px 15px;
+  cursor: pointer;
 }

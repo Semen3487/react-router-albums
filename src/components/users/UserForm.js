@@ -1,19 +1,26 @@
 import React, { useState } from 'react';
-import './UserForm.css';
-import { initFormState } from '../../models/initFormState'
+import { useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
+import { 
+  createUserAction, 
+  updateUserAction 
+} from '../../store/actions/usersActions';
+import './UserForm.css';
 
-function UserForm({users}) {
+
+
+function UserForm({users, formState}) {
 
   const {id} = useParams();
 
   const currentUser = users.find((user) => user.id === parseInt(id));
 
-  
-  const [user, setUser] = useState(currentUser ? currentUser : initFormState);
+  const [user, setUser] = useState(currentUser ? currentUser : formState);
 
   const history = useHistory();
+
+  const dispatch = useDispatch();
 
   function onInputChange(event) {
     setUser({
@@ -22,8 +29,22 @@ function UserForm({users}) {
     });
   };
 
+  const onSubmitForm = (event) => {
+    event.preventDefault();
+    if(!user.id){
+        const newUser = {
+        id: Date.now(),
+        ...user
+      }
+      dispatch(createUserAction(newUser));
+      setUser(formState);
+    }else{
+      dispatch(updateUserAction(user));
+    }
+  };
+
   const onReset = () => { 
-    setUser(initFormState)
+    setUser(formState)
   };
 
   const goBack = () => {
@@ -31,7 +52,10 @@ function UserForm({users}) {
   };
 
   return (
-    <form id='userForm' className='form-inner'>
+    <form id='userForm' 
+          className='form-inner'
+          onSubmit={onSubmitForm} 
+          >
       <div>
         <label htmlFor='userName'>Name</label>
         <input

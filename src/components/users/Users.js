@@ -1,25 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
+
 import UsersList from './UsersList';
 import './Users.css';
 import UserForm from './UserForm';
 import UserAlbums from './UserAlbums';
 import AlbumPhotos from '../albums/AlbumPhotos';
-import dataService from '../../data-service';
+import { receiveAllUsersAction } from '../../store/actions/usersActions';
 
 
 
 function Users() {
 
-  const [users, setUsers] = useState([]);
+  const {usersList: {users, formState}} = useSelector(state => state);
+
+  const dispatch = useDispatch();
 
   const {url, path} = useRouteMatch();
 
   useEffect(() => {
-    dataService.get('/users')
-    .then(({data}) => setUsers(data))
-    .catch((error) => console.log(error))
-  }, []) 
+    dispatch(receiveAllUsersAction())
+  }, [dispatch]) 
 
   return (
     <>
@@ -31,10 +33,14 @@ function Users() {
       </nav>
       <Switch>
         <Route path={`${path}`} exact>
-          <UsersList users={users} />
+          <UsersList users={users} 
+                      />
         </Route>
         <Route path={`${path}/add/:id`} >
-          <UserForm users={users}/>
+          <UserForm users={users}
+                    formState={formState} 
+                    key={formState.id} 
+                    />
         </Route>
         <Route path={`${path}/add/`} >
           <Redirect to={`${path}/add/:id`} >

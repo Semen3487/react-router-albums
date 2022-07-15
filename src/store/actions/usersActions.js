@@ -17,20 +17,20 @@ export const receiveAllUsersError = (payload) => ({
 });
 
 //* Get one user
-// export const receiveUserAction = () => ({
-//   type: ACTION_TYPES.GET_USER_ACTION
-// });
-// export const receiveUserRequest = () => ({
-//   type: ACTION_TYPES.GET_USER_REQUEST
-// });
-// export const receiveUserSuccess = (payload) => ({
-//   type: ACTION_TYPES.GET_USER_SUCCESS,
-//   payload
-// });
-// export const receiveUserError = (payload) => ({
-//   type: ACTION_TYPES.GET_USER_ERROR,
-//   payload
-// });
+export const receiveUserAction = () => ({
+  type: ACTION_TYPES.GET_USER_ACTION
+});
+export const receiveUserRequest = () => ({
+  type: ACTION_TYPES.GET_USER_REQUEST
+});
+export const receiveUserSuccess = (payload) => ({
+  type: ACTION_TYPES.GET_USER_SUCCESS,
+  payload
+});
+export const receiveUserError = (payload) => ({
+  type: ACTION_TYPES.GET_USER_ERROR,
+  payload
+});
 
 //* Create
 export const createUserAction = (payload) => ({

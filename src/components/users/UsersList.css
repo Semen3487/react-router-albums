@@ -33,6 +33,7 @@
   right: 8px;
   padding: 4px;
   border: solid 1px var(--main-col);
+  cursor: pointer;
 }
 
 
