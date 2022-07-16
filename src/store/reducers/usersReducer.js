@@ -62,8 +62,8 @@ const usersReducer = (state = initialState, {type, payload}) => {
     }
     case ACTION_TYPES.DELETE_USER_SUCCESS: return {
       ...state,
-      users: state.users.filter((user) => user.id !== payload),
-      formState: initFormState,
+      users: [...state.users.filter((user) => user.id !== payload)],
+      // formState: initFormState,
       isFetching: false
     }
     case ACTION_TYPES.DELETE_USER_ERROR: return {

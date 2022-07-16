@@ -13,7 +13,7 @@ import { receiveAllUsersAction } from '../../store/actions/usersActions';
 
 function Users() {
 
-  const {usersList: {users, formState}} = useSelector(state => state);
+  const {usersList: {users}} = useSelector(state => state);
 
   const dispatch = useDispatch();
 
@@ -38,8 +38,8 @@ function Users() {
         </Route>
         <Route path={`${path}/add/:id`} >
           <UserForm users={users}
-                    formState={formState} 
-                    key={formState.id} 
+                    // formState={formState}
+                    // key={formState.id} 
                     />
         </Route>
         <Route path={`${path}/add/`} >

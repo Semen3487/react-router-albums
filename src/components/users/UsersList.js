@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useRouteMatch } from 'react-router-dom';
 
@@ -10,19 +10,15 @@ function UsersList({users}) {
 
   const {url} = useRouteMatch();
 
-  const [user, setUser] = useState(users);
-
-  console.log(user)
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(receiveUserAction())
-  }, [dispatch]);
+  }, [dispatch])
 
-
-  function toDeleteUser() {
-    setUser(dispatch(deleteUserAction(user.id)));
+  function toDeleteUser(id) {
+    dispatch(deleteUserAction(id));
+    console.log(`user ${id} deleted`);
   };
 
   return (
@@ -43,7 +39,7 @@ function UsersList({users}) {
             </Link>
             <span id='delete' className='fa fa-trash-o' 
                   type='button' 
-                  onClick={toDeleteUser}>
+                  onClick={() => toDeleteUser(user.id)}>
             </span>
           </li>
         )

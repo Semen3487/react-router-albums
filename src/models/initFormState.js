@@ -1,4 +1,4 @@
-export const initFormState = {
+export const initForm = {
   name: '',
         username: '',
         email: '',

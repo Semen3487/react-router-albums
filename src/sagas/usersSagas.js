@@ -31,10 +31,10 @@ export function* receiveAllUsersSaga(){
   }
 };
 
-export function* receiveUserSaga(){
+export function* receiveUserSaga(payload){
   yield put(receiveUserRequest());
   try {
-    const user = yield dataService.get('/users/')
+    const user = yield dataService.get('/users/', payload)
       .then(({data}) => data);
     yield put(receiveUserSuccess(user));
   } catch (error) {
@@ -68,7 +68,6 @@ export function* deleteUserSaga(payload){
   yield put(deleteUserRequest());
   try {
     yield dataService.delete(`/users/${payload}`)
-      .then(({data}) => data);
     yield put(deleteUserSuccess(payload));
   } catch (error) {
     yield put(deleteUserError(error));
