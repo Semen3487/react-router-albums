@@ -1,21 +1,28 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import dataService from '../../data-service';
+
+import { getAlbumPhotosAction } from '../../store/actions/photosActions';
 import './AlbumPhotos.css';
 
 function AlbomFotos() {
 
-  const [photos, setPhotos] = useState([]);
+  const {photosList: {photos}} = useSelector(state => state);
 
   const {id} = useParams();
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    dataService.get(`/photos?albumId=${id}`)
-    .then(({data}) => setPhotos(data))
-    .catch((error) => console.log(error))
-  }, [id]);
+    dispatch(getAlbumPhotosAction())
+  }, [dispatch, id])
+
+  // useEffect(() => {
+  //   dataService.get(`/photos?albumId=${id}`)
+  //   .then(({data}) => setPhotos(data))
+  //   .catch((error) => console.log(error))
+  // }, [id]);
 
   return (
     <ul className='albums-inner'>

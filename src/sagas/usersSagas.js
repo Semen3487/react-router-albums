@@ -6,12 +6,12 @@ import {
   deleteUserError,
   deleteUserRequest,
   deleteUserSuccess,
-  receiveAllUsersError, 
-  receiveAllUsersRequest, 
-  receiveAllUsersSuccess,
-  receiveUserError,
-  receiveUserRequest,
-  receiveUserSuccess,
+  getAllUsersError, 
+  getAllUsersRequest, 
+  getAllUsersSuccess,
+  // receiveUserError,
+  // receiveUserRequest,
+  // receiveUserSuccess,
   updateUserError,
   updateUserRequest,
   updateUserSuccess
@@ -20,32 +20,32 @@ import {
 import dataService from '../data-service';
 
 
-export function* receiveAllUsersSaga(){
-  yield put(receiveAllUsersRequest());
+export function* getAllUsersSaga(){
+  yield put(getAllUsersRequest());
   try {
     const users = yield dataService.get('/users')
       .then(({data}) => data);
-    yield put(receiveAllUsersSuccess(users));
+    yield put(getAllUsersSuccess(users));
   } catch (error) {
-    yield put(receiveAllUsersError(error));
+    yield put(getAllUsersError(error));
   }
 };
 
-export function* receiveUserSaga(payload){
-  yield put(receiveUserRequest());
-  try {
-    const user = yield dataService.get('/users/', payload)
-      .then(({data}) => data);
-    yield put(receiveUserSuccess(user));
-  } catch (error) {
-    yield put(receiveUserError(error));
-  }
-};
+// export function* receiveUserSaga(payload){
+//   yield put(receiveUserRequest());
+//   try {
+//     const user = yield dataService.get('/users/', payload)
+//       .then(({data}) => data);
+//     yield put(receiveUserSuccess(user));
+//   } catch (error) {
+//     yield put(receiveUserError(error));
+//   }
+// };
 
-export function* createUserSaga(payload){
+export function* createUserSaga({payload}){
   yield put(createUserRequest());
   try {
-    const newUser = yield dataService.post('/users', payload)
+    const newUser = yield dataService.post(`/users`, payload)
       .then(({data}) => data);
     yield put(createUserSuccess(newUser));
   } catch (error) {
@@ -53,7 +53,7 @@ export function* createUserSaga(payload){
   }
 };
 
-export function* updateUserSaga(payload){
+export function* updateUserSaga({payload}){
   yield put(updateUserRequest());
   try {
     const updateUser = yield dataService.put(`/users/${payload.id}`, payload)
@@ -64,7 +64,7 @@ export function* updateUserSaga(payload){
   }
 };
 
-export function* deleteUserSaga(payload){
+export function* deleteUserSaga({payload}){
   yield put(deleteUserRequest());
   try {
     yield dataService.delete(`/users/${payload}`)

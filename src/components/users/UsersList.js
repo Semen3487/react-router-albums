@@ -1,8 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { 
+  // useEffect 
+} from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useRouteMatch } from 'react-router-dom';
 
-import { deleteUserAction, receiveUserAction } from '../../store/actions/usersActions';
+import { deleteUserAction, 
+  // receiveUserAction 
+} from '../../store/actions/usersActions';
 import './UsersList.css';
 
 
@@ -12,13 +16,12 @@ function UsersList({users}) {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(receiveUserAction())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(receiveUserAction())
+  // }, [dispatch])
 
   function toDeleteUser(id) {
     dispatch(deleteUserAction(id));
-    console.log(`user ${id} deleted`);
   };
 
   return (

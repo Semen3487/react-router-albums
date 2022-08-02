@@ -51,7 +51,7 @@ ul::-webkit-scrollbar-thumb {
 .content {
   padding: 15px;
   width: 70%;
-  max-width: 600px;
+  max-width: 550px;
   min-width: 400px;
   user-select: none;
 

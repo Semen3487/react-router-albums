@@ -1,10 +1,8 @@
 import ACTION_TYPES from "../actions/actionTypes";
-import { initFormState } from "../../models/initFormState";
 
 
 const initialState = {
   users: [],
-  formState: initFormState,
   isFetching: false,
   error: null
 }
@@ -18,11 +16,12 @@ const usersReducer = (state = initialState, {type, payload}) => {
     }
     case ACTION_TYPES.GET_USERS_SUCCESS: return {
       ...state,
-      users: payload,
+      users: [...payload],
       isFetching: false
     }
     case ACTION_TYPES.GET_USERS_ERROR: return {
       ...state,
+      isFetching: false,
       error: payload
     }
     //* Create
@@ -33,11 +32,11 @@ const usersReducer = (state = initialState, {type, payload}) => {
     case ACTION_TYPES.POST_USER_SUCCESS: return {
       ...state,
       users: [...state.users, payload],
-      formState: initFormState,
       isFetching: false
     }
     case ACTION_TYPES.POST_USER_ERROR: return {
       ...state,
+      isFetching: false,
       error: payload
     }
     //* Update
@@ -48,11 +47,11 @@ const usersReducer = (state = initialState, {type, payload}) => {
     case ACTION_TYPES.PUT_USER_SUCCESS: return {
       ...state,
       users: state.users.map((user) => user.id !== payload.id ? user : payload),
-      formState: initFormState,
       isFetching: false
     }
     case ACTION_TYPES.PUT_USER_ERROR: return {
       ...state,
+      isFetching: false,
       error: payload
     }
     //* Delete
@@ -62,12 +61,12 @@ const usersReducer = (state = initialState, {type, payload}) => {
     }
     case ACTION_TYPES.DELETE_USER_SUCCESS: return {
       ...state,
-      users: [...state.users.filter((user) => user.id !== payload)],
-      // formState: initFormState,
+      users: state.users.filter((user) => user.id !== payload),
       isFetching: false
     }
     case ACTION_TYPES.DELETE_USER_ERROR: return {
       ...state,
+      isFetching: false,
       error: payload
     }
     default: return state;

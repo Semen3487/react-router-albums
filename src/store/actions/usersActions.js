@@ -1,36 +1,36 @@
 import ACTION_TYPES from "./actionTypes";
 
 //* Get all
-export const receiveAllUsersAction = () => ({
+export const getAllUsersAction = () => ({
   type: ACTION_TYPES.GET_USERS_ACTION
 });
-export const receiveAllUsersRequest = () => ({
+export const getAllUsersRequest = () => ({
   type: ACTION_TYPES.GET_USERS_REQUEST
 });
-export const receiveAllUsersSuccess = (payload) => ({
+export const getAllUsersSuccess = (payload) => ({
   type: ACTION_TYPES.GET_USERS_SUCCESS,
   payload
 });
-export const receiveAllUsersError = (payload) => ({
+export const getAllUsersError = (payload) => ({
   type: ACTION_TYPES.GET_USERS_ERROR,
   payload
 });
 
 //* Get one user
-export const receiveUserAction = () => ({
-  type: ACTION_TYPES.GET_USER_ACTION
-});
-export const receiveUserRequest = () => ({
-  type: ACTION_TYPES.GET_USER_REQUEST
-});
-export const receiveUserSuccess = (payload) => ({
-  type: ACTION_TYPES.GET_USER_SUCCESS,
-  payload
-});
-export const receiveUserError = (payload) => ({
-  type: ACTION_TYPES.GET_USER_ERROR,
-  payload
-});
+// export const receiveUserAction = () => ({
+//   type: ACTION_TYPES.GET_USER_ACTION
+// });
+// export const receiveUserRequest = () => ({
+//   type: ACTION_TYPES.GET_USER_REQUEST
+// });
+// export const receiveUserSuccess = (payload) => ({
+//   type: ACTION_TYPES.GET_USER_SUCCESS,
+//   payload
+// });
+// export const receiveUserError = (payload) => ({
+//   type: ACTION_TYPES.GET_USER_ERROR,
+//   payload
+// });
 
 //* Create
 export const createUserAction = (payload) => ({

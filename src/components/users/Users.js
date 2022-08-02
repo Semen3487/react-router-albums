@@ -7,20 +7,21 @@ import './Users.css';
 import UserForm from './UserForm';
 import UserAlbums from './UserAlbums';
 import AlbumPhotos from '../albums/AlbumPhotos';
-import { receiveAllUsersAction } from '../../store/actions/usersActions';
+import { getAllUsersAction } from '../../store/actions/usersActions';
 
 
 
 function Users() {
 
   const {usersList: {users}} = useSelector(state => state);
+  console.log(users);
 
   const dispatch = useDispatch();
 
   const {url, path} = useRouteMatch();
 
   useEffect(() => {
-    dispatch(receiveAllUsersAction())
+    dispatch(getAllUsersAction())
   }, [dispatch]) 
 
   return (
@@ -38,13 +39,12 @@ function Users() {
         </Route>
         <Route path={`${path}/add/:id`} >
           <UserForm users={users}
-                    // formState={formState}
-                    // key={formState.id} 
+                    
                     />
         </Route>
         <Route path={`${path}/add/`} >
           <Redirect to={`${path}/add/:id`} >
-            <UserForm  />
+            <UserForm />
           </Redirect>
         </Route>
         <Route path={`${path}/:id`} >

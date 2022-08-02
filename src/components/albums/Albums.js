@@ -1,21 +1,22 @@
 import React from 'react';
-import { useState } from 'react';
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
-import dataService from '../../data-service';
+
+import { getAllAlbumsAction } from '../../store/actions/albumsActions';
 import AlbumList from './AlbumList';
 import AlbumPhotos from './AlbumPhotos';
 
 function Albums() {
 
-  const [albums, setAlbums] = useState([]);
+  const {albumsList: {albums}} = useSelector(state => state);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dataService.get('/albums').then(({data}) => {
-      setAlbums(data)
-    })
-    .catch((error) => console.log(error))
-  }, []);
+    dispatch(getAllAlbumsAction())
+  }, [dispatch]) 
+
 
   const {path} = useRouteMatch();
 
